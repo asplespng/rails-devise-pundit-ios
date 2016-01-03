@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class SignInViewController: UIViewController {
 
@@ -45,7 +46,15 @@ class SignInViewController: UIViewController {
             "Authorization": "Basic \(base64EncodedCredential)"]
         Alamofire.request(.POST, "http://localhost:3000/api/v1/sessions", headers: headers)
             .responseJSON { response in
-                debugPrint(response)
+                switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        print(json["tokens"].string)
+                    }
+                case .Failure(let error):
+                    print(error)
+                }
         }
         performSegueWithIdentifier("signInToHome", sender: sender)
     }
