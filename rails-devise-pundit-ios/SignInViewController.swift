@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignInViewController: UIViewController {
 
+    // MARK: Properties
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +38,15 @@ class SignInViewController: UIViewController {
     */
 
     @IBAction func signIn(sender: AnyObject) {
-        let i = "test"
+        let userPasswordString = "\(emailTextField.text!):\(passwordTextField.text!)"
+        let userPasswordData = userPasswordString.dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64EncodedCredential = userPasswordData.base64EncodedStringWithOptions([])
+        let headers = [
+            "Authorization": "Basic \(base64EncodedCredential)"]
+        Alamofire.request(.POST, "http://localhost:3000/api/v1/sessions", headers: headers)
+            .responseJSON { response in
+                debugPrint(response)
+        }
+        performSegueWithIdentifier("signInToHome", sender: sender)
     }
 }
