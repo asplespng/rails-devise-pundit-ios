@@ -14,6 +14,7 @@
 		8163959C1C397568006413D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8163959A1C397568006413D8 /* LaunchScreen.storyboard */; };
 		816395A41C397596006413D8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 816395A31C397596006413D8 /* .gitignore */; };
 		816395A61C397613006413D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 816395A51C397613006413D8 /* Podfile */; };
+		8191FB361C397C9300144AE7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191FB351C397C9300144AE7 /* SignInViewController.swift */; };
 		EEB993BB7C05D70D8BAB5641 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22BE9C77BD2D183A6441E6A /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		8163959D1C397568006413D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		816395A31C397596006413D8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		816395A51C397613006413D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8191FB351C397C9300144AE7 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F22BE9C77BD2D183A6441E6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F60A07652DC3C703CA756998 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				816395981C397568006413D8 /* Assets.xcassets */,
 				8163959A1C397568006413D8 /* LaunchScreen.storyboard */,
 				8163959D1C397568006413D8 /* Info.plist */,
+				8191FB351C397C9300144AE7 /* SignInViewController.swift */,
 			);
 			path = "rails-devise-pundit-ios";
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				816395941C397568006413D8 /* ViewController.swift in Sources */,
 				816395921C397568006413D8 /* AppDelegate.swift in Sources */,
+				8191FB361C397C9300144AE7 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
