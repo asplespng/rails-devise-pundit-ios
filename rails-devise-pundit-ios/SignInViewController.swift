@@ -45,12 +45,12 @@ class SignInViewController: UIViewController {
         let headers = [
             "Authorization": "Basic \(base64EncodedCredential)"]
         Alamofire.request(.POST, "http://localhost:3000/api/v1/sessions", headers: headers)
-            .responseJSON { response in
+            .validate().responseJSON { response in
                 switch response.result {
                 case .Success:
                     if let value = response.result.value {
                         let json = JSON(value)
-                        print(json["tokens"].string)
+                        print(json["token"].string)
                     }
                 case .Failure(let error):
                     print(error)
