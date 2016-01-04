@@ -44,8 +44,13 @@ class SignInViewController: UIViewController {
         let base64EncodedCredential = userPasswordData.base64EncodedStringWithOptions([])
         let headers = [
             "Authorization": "Basic \(base64EncodedCredential)"]
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        spinner.center = view.center
+        view.addSubview(spinner)
+        spinner.startAnimating()
         Alamofire.request(.POST, "http://localhost:3000/api/v1/sessions", headers: headers)
             .validate().responseJSON { response in
+                spinner.stopAnimating()
                 switch response.result {
                 case .Success:
                     if let value = response.result.value {
@@ -54,6 +59,10 @@ class SignInViewController: UIViewController {
                     }
                 case .Failure(let error):
                     print(error)
+                    if ((response.response?.statusCode) != nil) {
+                        print(NSHTTPURLResponse.localizedStringForStatusCode((response.response?.statusCode)!))
+                    }
+                    
                 }
         }
         performSegueWithIdentifier("signInToHome", sender: sender)
