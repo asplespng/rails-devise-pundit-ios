@@ -9,6 +9,24 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ObjectMapper
+import AlamofireObjectMapper
+
+class TokenResponse: Mappable {
+    var token: String?
+    var email: String?
+    var userId: Int?
+
+    required init?(_ map: Map){
+
+    }
+
+    func mapping(map: Map) {
+        token <- map["token"]
+        email <- map["email"]
+        userId <- map["user_id"]
+    }
+}
 
 class SignInViewController: UIViewController {
 
@@ -49,13 +67,16 @@ class SignInViewController: UIViewController {
         view.addSubview(spinner)
         spinner.startAnimating()
         Alamofire.request(.POST, "http://localhost:3000/api/v1/sessions", headers: headers)
-            .validate().responseJSON { response in
+            .validate().responseObject() { (response: Response<TokenResponse, NSError>) in
                 spinner.stopAnimating()
                 switch response.result {
                 case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        print(json["token"].string)
+                    if let tokenResponse = response.result.value {
+                        print("token: \(tokenResponse.token!)")
+                        print("email: \(tokenResponse.email!)")
+                        print("id: \(tokenResponse.userId!)")
+                        SharingManager.sharedInstance.token = tokenResponse.token!
+                        SharingManager.sharedInstance.userId = tokenResponse.userId!
                     }
                 case .Failure(let error):
                     print(error)
