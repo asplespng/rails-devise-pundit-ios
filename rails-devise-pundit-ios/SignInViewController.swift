@@ -12,7 +12,14 @@ import SwiftyJSON
 import ObjectMapper
 import AlamofireObjectMapper
 
-class TokenResponse: Mappable {
+enum TokenError:ErrorType {
+    case InvalidCredentials
+    case NoConnection
+    case InvalidEmail
+    case BlankPassword
+}
+
+class Token: Mappable {
     var token: String?
     var email: String?
     var userId: Int?
@@ -25,6 +32,10 @@ class TokenResponse: Mappable {
         token <- map["token"]
         email <- map["email"]
         userId <- map["user_id"]
+    }
+
+    class func endpointForTokens() -> String {
+        return "http://localhost:3000/api/v1/sessions"
     }
 }
 
@@ -57,6 +68,20 @@ class SignInViewController: UIViewController {
     */
 
     @IBAction func signIn(sender: AnyObject) {
+//        let token = Token();
+//        do {
+//            try signIn(emailTextField.text, passwordTextField.text, token)
+//        } catch TokenError.NoConnection {
+//            print("No Connection")
+//        } catch TokenError.InvalidCredentials {
+//            print("invalid credentials")
+//        } catch TokenError.InvalidEmail {
+//            print("invalid email")
+//        } catch TokenError.BlankPassword {
+//            print("invalid password")
+//        }
+
+//
         let userPasswordString = "\(emailTextField.text!):\(passwordTextField.text!)"
         let userPasswordData = userPasswordString.dataUsingEncoding(NSUTF8StringEncoding)!
         let base64EncodedCredential = userPasswordData.base64EncodedStringWithOptions([])
@@ -66,8 +91,8 @@ class SignInViewController: UIViewController {
         spinner.center = view.center
         view.addSubview(spinner)
         spinner.startAnimating()
-        Alamofire.request(.POST, "http://localhost:3000/api/v1/sessions", headers: headers)
-            .validate().responseObject() { (response: Response<TokenResponse, NSError>) in
+        Alamofire.request(.POST, Token.endpointForTokens(), headers: headers)
+            .validate().responseObject() { (response: Response<Token, NSError>) in
                 spinner.stopAnimating()
                 switch response.result {
                 case .Success:
@@ -83,9 +108,14 @@ class SignInViewController: UIViewController {
                     if ((response.response?.statusCode) != nil) {
                         print(NSHTTPURLResponse.localizedStringForStatusCode((response.response?.statusCode)!))
                     }
-                    
+
                 }
         }
         performSegueWithIdentifier("signInToHome", sender: sender)
     }
+
+//    func signIn(email: String, password: String, token: Token) throws -> Token {
+//        let token = try token.getToken(email, password);
+//        return token
+//    }
 }
