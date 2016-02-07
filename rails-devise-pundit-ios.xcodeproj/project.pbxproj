@@ -16,6 +16,7 @@
 		816395A61C397613006413D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 816395A51C397613006413D8 /* Podfile */; };
 		8191FB361C397C9300144AE7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191FB351C397C9300144AE7 /* SignInViewController.swift */; };
 		D37261461EF9249952B7EF3F /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3726E0BC08DEFE3E5EAA665 /* SharingManager.swift */; };
+		D37267BB7DBC4892D6CAA478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37260A152BD4C5A8DB2E391 /* User.swift */; };
 		EEB993BB7C05D70D8BAB5641 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22BE9C77BD2D183A6441E6A /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		816395A31C397596006413D8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		816395A51C397613006413D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8191FB351C397C9300144AE7 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D37260A152BD4C5A8DB2E391 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3726E0BC08DEFE3E5EAA665 /* SharingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
 		F22BE9C77BD2D183A6441E6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F60A07652DC3C703CA756998 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,8 +81,17 @@
 				8163959D1C397568006413D8 /* Info.plist */,
 				8191FB351C397C9300144AE7 /* SignInViewController.swift */,
 				D3726E0BC08DEFE3E5EAA665 /* SharingManager.swift */,
+				D372680639E67027ABFBD3D0 /* models */,
 			);
 			path = "rails-devise-pundit-ios";
+			sourceTree = "<group>";
+		};
+		D372680639E67027ABFBD3D0 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D37260A152BD4C5A8DB2E391 /* User.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		ED567AC6F9D05AEDC0444F3C /* Frameworks */ = {
@@ -228,6 +239,7 @@
 				816395921C397568006413D8 /* AppDelegate.swift in Sources */,
 				8191FB361C397C9300144AE7 /* SignInViewController.swift in Sources */,
 				D37261461EF9249952B7EF3F /* SharingManager.swift in Sources */,
+				D37267BB7DBC4892D6CAA478 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

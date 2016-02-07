@@ -68,20 +68,7 @@ class SignInViewController: UIViewController {
     */
 
     @IBAction func signIn(sender: AnyObject) {
-//        let token = Token();
-//        do {
-//            try signIn(emailTextField.text, passwordTextField.text, token)
-//        } catch TokenError.NoConnection {
-//            print("No Connection")
-//        } catch TokenError.InvalidCredentials {
-//            print("invalid credentials")
-//        } catch TokenError.InvalidEmail {
-//            print("invalid email")
-//        } catch TokenError.BlankPassword {
-//            print("invalid password")
-//        }
 
-//
         let userPasswordString = "\(emailTextField.text!):\(passwordTextField.text!)"
         let userPasswordData = userPasswordString.dataUsingEncoding(NSUTF8StringEncoding)!
         let base64EncodedCredential = userPasswordData.base64EncodedStringWithOptions([])

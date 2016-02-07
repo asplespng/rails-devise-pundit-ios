@@ -13,7 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("shared token: \(SharingManager.sharedInstance.token)")
-        // Do any additional setup after loading the view, typically from a nib.
+
+        User.userByID(1, completionHandler: { (response) in
+            response
+        })
     }
 
     override func didReceiveMemoryWarning() {
